@@ -12,6 +12,10 @@ class CountryResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
+
+
+    public static $wrap = "country";
+
     public function toArray($request)
     {
         return [
