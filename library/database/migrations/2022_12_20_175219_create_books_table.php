@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('category');
             $table->timestamps();
-            $table->date('publish_date');
+            $table->string('publish_year');
             $table->foreignId('category_id');
             $table->foreignId('author_id');
             $table->foreignId('publisher_id');
