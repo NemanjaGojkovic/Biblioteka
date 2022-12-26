@@ -49,7 +49,6 @@ Route::group(['middleware'=>['auth:sanctum']], function(){
         return auth()->user();
     });
     Route::resource('books', BookController::class)->only(['update','store','destroy']);
-    Route::resource('authors', AuthorController::class)->only(['update','store','destroy']);
     Route::post('/logout', [AuthenticationController::class, 'logout']);
 });
 
