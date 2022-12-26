@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthenticationController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookAuthorController;
 use App\Http\Controllers\BookController;
@@ -41,4 +42,6 @@ Route::resource('authors.books', BookAuthorController::class);
 Route::resource('categories.books', CategoryBookController::class);
 Route::resource('publishers.books', PublisherBookController::class);
 Route::resource('countries.authors', CountryAuthorController::class);
+Route::post('/register', [AuthenticationController::class, 'register']);
+Route::post('/login', [AuthenticationController::class, 'login']);
 
