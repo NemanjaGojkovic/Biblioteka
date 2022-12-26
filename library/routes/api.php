@@ -32,8 +32,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/users/{id}', [UserController::class, 'show']);
-Route::resource('authors', AuthorController::class);
-Route::resource('books', BookController::class);
+Route::resource('authors', AuthorController::class)->only(['index']);
+Route::resource('books', BookController::class)->only(['index']);
 Route::resource('categories', CategoryController::class);
 Route::resource('publishers', PublisherController::class);
 Route::resource('countries', CountryController::class);
@@ -44,4 +44,12 @@ Route::resource('publishers.books', PublisherBookController::class);
 Route::resource('countries.authors', CountryAuthorController::class);
 Route::post('/register', [AuthenticationController::class, 'register']);
 Route::post('/login', [AuthenticationController::class, 'login']);
+Route::group(['middleware'=>['auth:sanctum']], function(){
+    Route::get('/profile', function(Request $request){
+        return auth()->user();
+    });
+    Route::resource('books', BookController::class)->only(['update','store','destroy']);
+    Route::resource('authors', AuthorController::class)->only(['update','store','destroy']);
+    Route::post('/logout', [AuthenticationController::class, 'logout']);
+});
 

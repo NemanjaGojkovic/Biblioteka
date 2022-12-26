@@ -6,6 +6,8 @@ use App\Http\Resources\AuthorCollection;
 use App\Http\Resources\AuthorResource;
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AuthorController extends Controller
 {

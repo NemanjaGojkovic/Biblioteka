@@ -10,6 +10,8 @@ class Author extends Model
 {
     use HasFactory;
 
+    protected $guarded=[];
+
     public function country()
     {
         return $this->belongsTo(Country::class);
